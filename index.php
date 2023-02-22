@@ -1,7 +1,11 @@
 <?php
+    session_start();
     include_once "functions.php";    
     if (isset($_GET["length"]) && is_numeric($_GET["length"])) {
         $createdPassword = generatePassword($_GET["length"]);
+        $_SESSION['password'] = $createdPassword;
+        header("Location: password.php");
+        exit();
     }
 ?>
 
